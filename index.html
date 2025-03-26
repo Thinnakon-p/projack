@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Countdown</title>
+    <style>
+        body {
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            width: 600px;
+            height: 400px;
+        }
+
+        .couple-names {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .heart-icon {
+            color: red;
+            font-size: 1.5em;
+            animation: beat 1s infinite;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(0.8); }
+        }
+
+       body {
+    display: flex
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #101010;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.wave-text span {
+    display: inline-block;
+    font-size: 1em;
+    animation: wave 2s ease-in-out infinite;
+}
+
+.wave-text span:nth-child(1) {
+    animation-delay: 02s;
+}
+.wave-text span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+.wave-text span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+ .wave-text span:nth-child(4) {
+  animation-delay: 0.5s;
+}
+.wave-text span:nth-child(5) {
+    animation-delay: 0.6s;
+}
+.wave-text span:nth-child(6) {
+  animation-delay: 0.7s;
+}
+.wave-text span:nth-child(7) {
+  animation-delay: 0.8s;
+}
+.wave-text span:nth-child(8) {
+  animation-delay: 0.9s;
+}
+.wave-text span:nth-child(9) {
+  animation-delay: 0.10s;
+}
+.wave-text span:nth-child(10) {
+  animation-delay: 0.11s;
+}
+.wave-text span:nth-child(11){
+  animation-delay: 0.12s;
+}
+.wave-text span:nth-child(12) {
+  animation-delay: 0.13s;
+}
+.wave-text span:nth-child(13) {
+  animation-delay: 0.14;
+}
+.wave-text span:nth-child(14) {
+  animation-delay: 0.15s;
+}
+.wave-text span:nth-child(15) {
+  animation-delay: 0.16s;
+}
+.wave-text span:nth-child(16) {
+  animation-delay: 0.17s;
+}
+.wave-text span:nth-child(17) {
+  animation-delay: 0.18s;
+}
+.wave-text span:nth-child(18) {
+  animation-delay: 0.19s;
+}
+.wave-text span:nth-child(19) {
+  animation-delay: 0.20s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+        /* พื้นหลังอนิเมชั่นสี่เหลี่ยม */
+        #animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .square {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            filter: blur(1px);
+            border-radius: 5px;
+            width: 10px;
+            height: 10px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wave-container">
+    <h1 class="wave-text">
+      
+        <span>A</span>
+        <span>N</span>
+        <span>N</span>
+        <span>i</span>
+        <span>v</span>
+        <span>e</span>
+        <span>r</span>
+        <span>s</span>
+        <span>a</span>
+        <span>r</span>
+        <span>y</span>
+        <span>C</span>
+        <span>o</span>
+        <span>u</span>
+        <span>t</span>
+        <span>d</span>
+        <span>o</span>
+        <span>w</span>
+        <span>n</span>
+    </h1>
+</div>
+
+        <div class="couple-names">
+            <span id="partner1">phupa</span>
+            <span class="heart-icon">❤️</span>
+            <span id="partner2">Yayee</span>
+        </div>
+        <div class="anniversary-info">
+            <p>Start Date: <span id="start-date">2025-03-04</span></p>
+            <p>1 Month Anniversary: <span id="one-month-anniversary-date"></span></p>
+            <p>Time Together: <span id="elapsed-time"></span></p>
+        </div>
+        <div class="countdown">
+            <h2>Countdown to 1 Month Anniversary</h2>
+            <div id="countdown-timer"></div>
+        </div>
+    </div>
+    <div id="animation-container"></div>
+
+    <script>
+        const startDate = new Date('2025-03-04');
+        const anniversaryTextElement = document.getElementById('anniversary-text');
+        const oneMonthAnniversaryDateElement = document.getElementById('one-month-anniversary-date');
+        const elapsedTimeElement = document.getElementById('elapsed-time');
+        const countdownTimerElement = document.getElementById('countdown-timer');
+
+        function calculateOneMonthAnniversary(startDate) {
+            const oneMonth = new Date(startDate);
+            oneMonth.setMonth(oneMonth.getMonth() + 1);
+            return oneMonth;
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const anniversaryDate = calculateOneMonthAnniversary(startDate);
+            const timeDiff = anniversaryDate.getTime() - now.getTime();
+
+            if (timeDiff > 0) {
+                const days = Math.floor(timeDiff / (1000 * 3600 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 3600 * 24)) / (1000 * 3600));
+                const minutes = Math.floor((timeDiff % (1000 * 3600)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                countdownTimerElement.textContent = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+            } else {
+                countdownTimerElement.textContent = "🎉 Happy 1 Month Anniversary! 🎉";
+            }
+        }
+
+        function updateElapsedTime() {
+            const now = new Date();
+            const timeDiff = now.getTime() - startDate.getTime();
+
+            const days = Math.floor(timeDiff / (1000 * 3600 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 3600 * 24)) / (1000 * 3600));
+            const minutes = Math.floor((timeDiff % (1000 * 3600)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            elapsedTimeElement.textContent = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+        }
+
+        function createSquare() {
+            const animationContainer = document.getElementById('animation-container');
+            const square = document.createElement('div');
+            square.className = 'square';
+            square.style.width = '10px';
+            square.style.height = '10px';
+            square.style.left = Math.random() * window.innerWidth + 'px';
+            square.style.top = '-10px';
+            square.style.animationDuration = Math.random() * 3 + 2 + 's';
+            animationContainer.appendChild(square);
+
+            setTimeout(() => {
+                if (square.parentNode) {
+                    square.remove();
+                }
+            }, 5000);
+        }
+
+        setInterval(createSquare, 300);
+        oneMonthAnniversaryDateElement.textContent = calculateOneMonthAnniversary(startDate).toLocaleDateString();
+        setInterval(updateCountdown, 1000);
+        setInterval(updateElapsedTime, 1000);
+    </script>
+</body>
+</html>
